@@ -24,8 +24,7 @@ class ApiConstants {
   static const Duration connectTimeout = Duration(seconds: 10);
   static const Duration receiveTimeout = Duration(seconds: 15);
 
-  // Planned Backend Endpoints
-  // NOTE: These are PLANNED / BACKEND DEPENDENT until the Express backend is connected.
+  // Express backend endpoints.
   static const String usersEndpoint = '/users';
   static String userByIdEndpoint(String id) => '/users/$id';
 

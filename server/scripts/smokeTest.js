@@ -3,7 +3,7 @@
  * It creates and then cancels one booking, so the selected event's inventory
  * is restored before the script finishes.
  */
-const baseUrl = (process.env.API_BASE_URL || 'http://localhost:5000/api').replace(/\/$/, '');
+const baseUrl = (process.env.API_BASE_URL || 'http://127.0.0.1:5000/api').replace(/\/$/, '');
 
 const request = async (path, options = {}) => {
   const response = await fetch(`${baseUrl}${path}`, {

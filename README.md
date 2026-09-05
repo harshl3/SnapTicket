@@ -219,4 +219,42 @@ This project demonstrates practical implementation of:
 * Theme management
 * Git & GitHub
 
+## Deployment
+
+### Render API
+
+Deploy the `smartticket/server` directory as a Node web service. The included
+Render configuration uses `npm ci`, `npm start`, and `/api/health` as the
+health check. Set these environment variables in Render:
+
+* `MONGO_URI` — a MongoDB Atlas connection string
+* `CLIENT_URL` — the deployed Vercel URL, or a comma-separated list of allowed web origins
+
+### Vercel Web Client
+
+Deploy the `smartticket/client` directory. Set `VITE_API_BASE_URL` to the
+Render API URL ending in `/api`, for example:
+
+```text
+https://your-render-service.onrender.com/api
+```
+
+The client includes a Vercel rewrite so BrowserRouter routes work on direct
+page loads.
+
+### Flutter Mobile
+
+Build a release APK with the deployed API URL:
+
+```text
+flutter build apk --release --dart-define=API_BASE_URL=https://your-render-service.onrender.com/api
+```
+
+The real API is enabled by default. Use `USE_MOCK_API=true` only for local UI
+development.
+
+Before deploying, rotate any MongoDB credentials that may have been used in a
+local `.env` file and create the replacement value only in Render's secret
+environment settings.
+
 ---
